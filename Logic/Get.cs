@@ -11,8 +11,10 @@ namespace Logic
 
         public Hello GetHello()
         {
-            var hello = new Hello();
-            hello.Name = "Jesper";
+            var hello = new Hello
+            {
+                Name = "Jesper"
+            };
             return hello;
         }
     }
