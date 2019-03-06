@@ -13,16 +13,34 @@ namespace PCL.Controllers
     public class ValuesController : ControllerBase
     {
         public Get Getter;
+        public Datacontext db;
+
         public ValuesController()
         {
+            db = new Datacontext();
             this.Getter = new Get();
         }
-        
+
         // GET api/values
         [HttpGet]
         public ActionResult<Hello> Get()
         {
             return Getter.GetHello();
+        }
+
+        // GET api/values
+        [HttpGet]
+        [Route("api/Cases")]
+        public ActionResult<List<Case>> GetCases()
+        {
+            var Case = (from cases in db.Case select cases).FirstOrDefault();
+            int newValue = 0;
+            int.TryParse(Case.CaseNumber, out newValue);
+            newValue += 1;
+            Case.CaseNumber = newValue.ToString();
+
+            db.SaveChanges();
+            return (from cases in db.Case select cases).ToList();
         }
 
         // GET api/values/5
