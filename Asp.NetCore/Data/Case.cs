@@ -12,7 +12,7 @@ namespace Data
         public string TRVNumber { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ChangedDate { get; set; }
-        public virtual ICollection<Information> Information { get; set; }
-        public virtual ICollection<Application> Applications { get; set; }
+        //public virtual ICollection<Information> Information { get; set; }
+        //public virtual ICollection<Application> Applications { get; set; }
     }
 }
